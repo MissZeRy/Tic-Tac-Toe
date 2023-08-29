@@ -48,20 +48,19 @@ function handleClick(e) {
 
 function checkWin() {
     for (let i of winningCombinations) {
-        let [e1, e2, e3] = [cells[i[0]].innerHTML, cells[i[1]].innerHTML, cells[i[2]].innerHTML]
-
-        if (e1 != "" && e2 != "" && e3 != "") {
-            if (e1 == e2 && e2 == e3) {
+        let [e1, e2, e3] = [cells[i[0]].innerHTML, cells[i[1]].innerHTML, cells[i[2]].innerHTML];
+        if (e1 !== "" && e2 !== "" && e3 !== "") {
+            if (e1 === e2 && e2 === e3) {
+                winner(e1);
                 count = 0;
-                winner(e1)
-            } else if (count === 9) {
-                winner("DRAW")
-                break;
+                return;
             }
         }
     }
+    if (count === 9) {
+        winner("DRAW");
+    }
 }
-
 
 function winner(winner) {
     if (winner === "DRAW") {
